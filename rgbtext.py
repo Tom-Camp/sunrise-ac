@@ -23,7 +23,7 @@ def main():
     while True:
         ured, ugreen, ublue = raw_input( "Enter RGB values: ").split()
         for i in range(32):
-            leds.setPixelColorRGB(pixel = i, red = ured, green = ugreen, blue = ublue)
+            leds.setPixelColorRGB(pixel = i, red = int(ured), green = int(ugreen), blue = int(ublue))
             leds.show()
 
         time.sleep(3)
