@@ -21,7 +21,10 @@ def main():
     turn_off(leds)
 
     while True:
-        ured, ugreen, ublue = raw_input( "Enter RGB values: ").split()
+        ured, ugreen, ublue = raw_input( "Enter RGB values (x to exit): ").split()
+
+        if ured == 'x':
+            break
         for i in range(32):
             leds.setPixelColorRGB(pixel = i, red = int(ured), green = int(ugreen), blue = int(ublue))
             leds.show()
