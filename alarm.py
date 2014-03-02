@@ -33,7 +33,7 @@ def main():
     # initialize spi and leds objects
     spidev	= file("/dev/spidev0.0", "wb")  # ref to spi connection to the led bar
     leds = ledstrip.LEDStrip(pixels = args.leds, spi = spidev)
-    leds.setPixelRGB(pixel = 1, red = 127, green = 127, blue = 127)
+    leds.setPixelColorRGB(pixel = 1, red = 127, green = 127, blue = 127)
     leds.show()
     all_off(leds)
     leds = 'all'
