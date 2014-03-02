@@ -15,9 +15,9 @@ args = parser.parse_args()
 
 
 def main():
-	# initialize spi and leds objects
-	spidev		= file("/dev/spidev0.0", "wb")  # ref to spi connection to the led bar
-	leds 		= ledstrip.LEDStrip(pixels=args.leds, spi=spidev)
+    # initialize spi and leds objects
+    spidev = file("/dev/spidev0.0", "wb")  # ref to spi connection to the led bar
+    leds = ledstrip.LEDStrip(pixels=args.leds, spi=spidev)
     turn_off()
 
     while True:
