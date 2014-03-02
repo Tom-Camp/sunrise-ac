@@ -31,9 +31,9 @@ logging.basicConfig(filename='alarm.log', level=logging.INFO, format='%(asctime)
 
 def main():
     # initialize spi and leds objects
-    #spidev	= file("/dev/spidev0.0", "wb")  # ref to spi connection to the led bar
-    #leds = ledstrip.LEDStrip(pixels = args.leds, spi = spidev)
-    #all_off(leds)
+    spidev	= file("/dev/spidev0.0", "wb")  # ref to spi connection to the led bar
+    leds = ledstrip.LEDStrip(pixels = args.leds, spi = spidev)
+    all_off(leds)
     leds = 'all'
     while True:
         day = time.strftime('%A')
