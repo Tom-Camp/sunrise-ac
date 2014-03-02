@@ -36,7 +36,7 @@ def main():
     leds.setPixelColorRGB(pixel = 1, red = 127, green = 127, blue = 127)
     leds.show()
     all_off(leds)
-    leds = 'all'
+
     while True:
         day = time.strftime('%A')
         start_time = Config.get('StartTimes', day)
