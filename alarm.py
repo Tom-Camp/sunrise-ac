@@ -48,21 +48,21 @@ def main():
             start_now = time.mktime(datetime.datetime.strptime(start, '%Y-%m-%d %H:%M').timetuple())
 
             if now >= start_now and now <= start_now + 1:
-                print now, start_now
                 logging.info('Starting alarm')
-                alarm_on(leds)
+                alarm_on(leds, debug = True)
                 time.sleep(120)
                 logging.info('Stopping alarm')
                 all_off(leds)
 
-def alarm_on(leds):
+def alarm_on(leds, debug = False):
+    pause = 10 if debug else 1
     colors = {'red':[255, 0, 0], 'orange':[255, 69, 0], 'yellow':[240, 230, 140], 'blue':[135, 206, 235]}
     phases = ['red', 'orange', 'yellow', 'blue']
     for phase in phases:
         for pix in range(32):
             leds.setPixelColorRGB(pixel = pix, red = colors[phase][0], green = colors[phase][1], blue = colors[phase][1])
             leds.show()
-            time.sleep(1)
+            time.sleep(pause)
 
 def all_off(leds):
     for each in range(32):
