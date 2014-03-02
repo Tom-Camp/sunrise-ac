@@ -28,7 +28,7 @@ def main():
             leds.show()
 
         time.sleep(3)
-        turn_off
+        turn_off()
 
 
 def turn_off():
