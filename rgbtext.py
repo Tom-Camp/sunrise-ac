@@ -18,7 +18,7 @@ def main():
     # initialize spi and leds objects
     spidev = file("/dev/spidev0.0", "wb")  # ref to spi connection to the led bar
     leds = ledstrip.LEDStrip(pixels=args.leds, spi=spidev)
-    turn_off()
+    turn_off(leds)
 
     while True:
         ured, ugreen, ublue = raw_input( "Enter RGB values: ").split()
@@ -27,10 +27,10 @@ def main():
             leds.show()
 
         time.sleep(3)
-        turn_off()
+        turn_off(leds)
 
 
-def turn_off():
+def turn_off(leds):
     for each in range(32):
         leds.setPixelColorRGB(pixel = each, red = 0, green = 0, blue = 0)
         leds.show()
