@@ -59,7 +59,7 @@ def alarm_on(leds, debug = False):
         pause = 1
     else:
         pause = 10
-    colors = {'red':[255, 0, 0], 'orange':[255, 123, 0], 'yellow':[255, 255, 0], 'blue':[135, 206, 235]}
+    colors = {'red':[255, 0, 0], 'orange':[83, 46, 0], 'yellow':[124, 51, 1], 'blue':[135, 206, 235]}
     phases = ['red', 'orange', 'yellow', 'blue']
     for phase in phases:
         for pix in range(32):
