@@ -49,7 +49,7 @@ def main():
 
             if now >= start_now and now <= start_now + 1:
                 logging.info('Starting alarm')
-                alarm_on(leds, debug = False)
+                alarm_on(leds, debug = True)
                 time.sleep(120)
                 logging.info('Stopping alarm')
                 all_off(leds)
@@ -63,9 +63,17 @@ def alarm_on(leds, debug = False):
     phases = ['red', 'pink', 'yellow', 'blue']
     for phase in phases:
         for pix in range(32):
-            leds.setPixelColorRGB(pixel = pix, red = colors[phase][0], green = colors[phase][1], blue = colors[phase][1])
-            leds.show()
-            time.sleep(pause)
+            if phase != 'blue':
+                leds.setPixelColorRGB(pixel = pix, red = colors[phase][0], green = colors[phase][1], blue = colors[phase][1])
+                leds.show()
+                time.sleep(pause)
+            else:
+                if pix % 2 == 0:
+                    leds.setPixelColorRGB(pixel = pix, red = colors[phase][0], green = colors[phase][1], blue = colors[phase][1])
+                else:
+                    leds.setPixelColorRGB(pixel = pix, red = 127, green = 127, blue = 127)
+                leds.show()
+                time.sleep(pause)
 
 def all_off(leds):
     for each in range(32):
