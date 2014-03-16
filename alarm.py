@@ -49,8 +49,8 @@ def main():
 
             if now >= start_now and now <= start_now + 1:
                 logging.info('Starting alarm')
-                alarm_on(leds, debug = True)
-                time.sleep(120)
+                alarm_on(leds, debug = False)
+                time.sleep(600)
                 logging.info('Stopping alarm')
                 all_off(leds)
 
