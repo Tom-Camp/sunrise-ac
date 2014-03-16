@@ -53,6 +53,11 @@ def main():
                 time.sleep(120)
                 logging.info('Stopping alarm')
                 all_off(leds)
+            
+            if start_now > now && start_now - now > 3600:
+                time.sleep(3600)
+            elif start_now < now && now - start_now > 3600:
+                time.sleep(3600)
 
 def alarm_on(leds, debug = False):
     if debug:
