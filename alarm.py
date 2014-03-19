@@ -35,24 +35,34 @@ def main():
     leds = ledstrip.LEDStrip(pixels = args.leds, spi = spidev)
     all_off(leds)
 
-    while True:
-        day = time.strftime('%A')
-        start_time = Config.get('StartTimes', day)
+    day = time.strftime('%A')
+    start_time = Config.get('StartTimes', day)
         
-        if (start_time == 'None'):
-            continue
-        else:
-            start_day = time.strftime('%Y-%m-%d')
-            start = ' ' . join([start_day, start_time])
-            now = time.time()
-            start_now = time.mktime(datetime.datetime.strptime(start, '%Y-%m-%d %H:%M').timetuple())
+    if (start_time == 'None'):
+        continue
+    else:
+        start_day = time.strftime('%Y-%m-%d')
+        start = ' ' . join([start_day, start_time])
+        now = time.time()
+        start_now = time.mktime(datetime.datetime.strptime(start, '%Y-%m-%d %H:%M').timetuple())
+           
+        next_cron = now + 900
 
-            if now >= start_now and now <= start_now + 1:
-                logging.info('Starting alarm')
-                alarm_on(leds, debug = False)
-                time.sleep(600)
-                logging.info('Stopping alarm')
-                all_off(leds)
+        if start_now > now and start_now <= next_cron:
+            alarm_start()
+
+
+def alarm_start():
+
+    while True:
+        if now >= start_now and now <= start_now + 1:
+            logging.info('Starting alarm')
+            alarm_on(leds, debug = False)
+            time.sleep(600)
+            logging.info('Stopping alarm')
+            all_off(leds)
+            break
+
 
 def alarm_on(leds, debug = False):
     if debug:
