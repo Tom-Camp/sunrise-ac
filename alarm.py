@@ -35,6 +35,7 @@ def main():
     start_time = Config.get('StartTimes', day)
         
     if (start_time != 'None'):
+        logging.info('Passed cron')
         start_day = time.strftime('%Y-%m-%d')
         start = ' ' . join([start_day, start_time])
         now = time.time()
