@@ -30,10 +30,6 @@ logging.basicConfig(filename='alarm.log', level=logging.INFO, format='%(asctime)
 
 
 def main():
-    # initialize spi and leds objects
-    spidev	= file("/dev/spidev0.0", "wb")  # ref to spi connection to the led bar
-    leds = ledstrip.LEDStrip(pixels = args.leds, spi = spidev)
-    all_off(leds)
 
     day = time.strftime('%A')
     start_time = Config.get('StartTimes', day)
@@ -55,6 +51,10 @@ def alarm_start(start_now):
     while True:
         now = time.time()
         if now >= start_now and now <= start_now + 1:
+            # initialize spi and leds objects
+            spidev	= file("/dev/spidev0.0", "wb")  # ref to spi connection to the led bar
+            leds = ledstrip.LEDStrip(pixels = args.leds, spi = spidev)
+            all_off(leds)
             logging.info('Starting alarm')
             alarm_on(leds, debug = False)
             time.sleep(600)
