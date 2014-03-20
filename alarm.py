@@ -47,10 +47,10 @@ def main():
         next_cron = now + 900
 
         if start_now > now and start_now <= next_cron:
-            alarm_start()
+            alarm_start(now, start_now)
 
 
-def alarm_start():
+def alarm_start( now, start_now):
 
     while True:
         if now >= start_now and now <= start_now + 1:
