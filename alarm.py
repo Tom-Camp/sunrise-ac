@@ -38,9 +38,7 @@ def main():
     day = time.strftime('%A')
     start_time = Config.get('StartTimes', day)
         
-    if (start_time == 'None'):
-        continue
-    else:
+    if (start_time != 'None'):
         start_day = time.strftime('%Y-%m-%d')
         start = ' ' . join([start_day, start_time])
         now = time.time()
